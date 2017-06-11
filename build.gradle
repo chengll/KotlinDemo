@@ -1,0 +1,25 @@
+
+buildscript {
+    //如果是第一次加载kotlin，则要进行config,如果config成功后则会自动添加ext句
+    ext.kotlin_version = '1.1.2-4'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+        //配置kotlin的环境
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        //配置kotlin的部分
+        maven {url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
